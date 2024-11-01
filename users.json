@@ -1,0 +1,15 @@
+[
+    {
+        "username": "admin",
+        "password": "$2y$10$EXEMPLODEHASHDECRYPTPASS"
+    },
+    {
+        "username": "user2",
+        "password": "$2y$10$EXEMPLODEHASHDECRYPTPASS"
+    },
+    {
+        "name": "ESMAEL DOS SANTOS DE SOUZA",
+        "email": "esmael.souza2015@gmail.com",
+        "password": "$2y$10$yPREXqvbzpyi4DNrRClOU.Nn5rQkYhI7LRUEY3cZGaG8vRRhIElAm"
+    }
+]

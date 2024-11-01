@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos - Projetos Professor Esmael</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Projetos Professor Esmael</h1>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="services.html">Serviços</a></li>
+                <li><a href="about.html">Sobre</a></li>
+                <li><a href="contact.html">Contato</a></li>
+                <li><a href="documents.html">Documentos</a></li>
+                  <!-- Botão de Login -->
+                <li><a href="login.html" class="login-button">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção de Documentos PDF -->
+    <section class="documents">
+        <h2>Documentos em PDF</h2>
+        <p>Aqui você encontra os documentos importantes para download.</p>
+        
+        <!-- Lista de documentos PDF carregados dinamicamente -->
+        <ul>
+            <?php
+                // Verifica se o arquivo JSON existe e contém dados
+                if (file_exists('documents.json')) {
+                    $document_data = json_decode(file_get_contents('documents.json'), true);
+                    
+                    // Exibe cada documento como um link
+                    foreach ($document_data as $document) {
+                        echo "<li><a href='" . $document['path'] . "' target='_blank'>" . $document['name'] . " - " . $document['description'] . "</a></li>";
+                    }
+                } else {
+                    echo "<p>Nenhum documento disponível no momento.</p>";
+                }
+            ?>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Projetos Professor Esmael. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos - Projetos Professor Esmael</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Documentos</h1>
+    </header>
+
+    <section class="document-list">
+        <h2>Lista de Documentos Disponíveis para Download</h2>
+        <ul>
+            <?php
+            $documents = file_exists('documents.json') ? json_decode(file_get_contents('documents.json'), true) : [];
+            foreach ($documents as $doc) {
+                echo "<li><a href='" . $doc['path'] . "' target='_blank'>" . $doc['name'] . "</a> - Enviado em: " . $doc['date_uploaded'] . "</li>";
+            }
+            ?>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Projetos Professor Esmael. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

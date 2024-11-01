@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração de Usuários - Projetos Professor Esmael</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Administração de Usuários</h1>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="services.html">Serviços</a></li>
+            <li><a href="about.html">Sobre</a></li>
+            <li><a href="contact.html">Contato</a></li>
+            <li><a href="documents.html">Documentos</a></li>
+              <!-- Botão de Login -->
+            <li><a href="login.html" class="login-button">Login</a></li>
+        </ul>
+    </header>
+
+    <section class="user-management">
+        <h2>Lista de Usuários</h2>
+        <ul>
+            <?php
+            $users = json_decode(file_get_contents('users.json'), true);
+            foreach ($users as $user) {
+                echo "<li>" . $user['username'] . " <a href='delete_user.php?username=" . $user['username'] . "'>Remover</a></li>";
+            }
+            ?>
+        </ul>
+
+        <h2>Adicionar Novo Usuário</h2>
+        <form action="add_user.php" method="POST">
+            <label for="new_username">Nome de Usuário:</label>
+            <input type="text" id="new_username" name="username" required>
+
+            <label for="new_password">Senha:</label>
+            <input type="password" id="new_password" name="password" required>
+
+            <button type="submit">Adicionar Usuário</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Projetos Professor Esmael. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração de Usuários - Projetos Professor Esmael</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Administração de Usuários</h1>
+    </header>
+
+    <section class="user-management">
+        <h2>Lista de Usuários</h2>
+        <ul>
+            <?php
+            $users = json_decode(file_get_contents('users.json'), true);
+            foreach ($users as $user) {
+                echo "<li>Nome: " . $user['name'] . " | E-mail: " . $user['email'] . " <a href='delete_user.php?email=" . $user['email'] . "'>Remover</a></li>";
+            }
+            ?>
+        </ul>
+
+        <h2>Adicionar Novo Usuário Manualmente</h2>
+        <form action="add_user.php" method="POST">
+            <label for="new_name">Nome Completo:</label>
+            <input type="text" id="new_name" name="name" required>
+
+            <label for="new_email">E-mail:</label>
+            <input type="email" id="new_email" name="email" required>
+
+            <label for="new_password">Senha:</label>
+            <input type="password" id="new_password" name="password" required>
+
+            <button type="submit">Adicionar Usuário</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Projetos Professor Esmael. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
